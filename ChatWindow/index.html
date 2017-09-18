@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>聊天窗口</title>
+		<style type="text/css">
+			* {
+				font-family: "微软雅黑";
+				padding: 0;
+				margin: 0;
+			}
+			
+			html {
+				background: #176994;
+			}
+			/*webkit内核浏览器滚动条*/
+			
+			::-webkit-scrollbar-track-piece {
+				background: #e9e9e9;
+			}
+			
+			::-webkit-scrollbar {
+				width: 8px;
+				height: 8px;
+			}
+			
+			::-webkit-scrollbar-button {
+				display: none;
+			}
+			
+			::-webkit-scrollbar-track,
+			::-webkit-scrollbar-track-piece {
+				background: -webkit-gradient(linear, left);
+			}
+			
+			::-webkit-scrollbar-thumb,
+			::-webkit-scrollbar-thumb:horizontal {
+				border-radius: 6px;
+				background: #bdbdbd;
+			}
+			
+			::-webkit-scrollbar-thumb:hover {
+				background: #8e8e8e;
+			}
+			
+			::-webkit-scrollbar-thumb:active {
+				background: #828181;
+			}
+			
+			.chat_box {
+				background: #ffffff;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				width: 810px;
+				height: 730px;
+				margin: 50px auto;
+			}
+			
+			.chat_top {
+				height: 60px;
+				width: 100%;
+				border-bottom: 2px solid #ccc;
+				position: relative;
+			}
+			
+			.chat_top img {
+				margin: 10px 10px 0px 20px;
+				display: block;
+				float: left;
+			}
+			
+			.chat_top span {
+				display: block;
+				float: left;
+				line-height: 60px;
+			}
+			
+			.chat_box b {
+				color: #BDBDBD;
+				font-weight: bolder;
+				font-size: 24px;
+				position: absolute;
+				right: 10px;
+				top: 2px;
+				cursor: pointer;
+			}
+			
+			.main {
+				width: 609px;
+				/*height:670px;*/
+				height: auto;
+				float: left;
+			}
+			
+			.chat_cb {
+				width: 200px;
+				height: 668px;
+				float: left;
+				background: #F4F6F8;
+				border-left: 1px solid #ccc;
+			}
+			
+			.cb_title {
+				height: 50px;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			.cb_title span {
+				line-height: 50px;
+				margin-left: 10px;
+			}
+			
+			.chat {
+				width: 100%;
+				height: 541px;
+				/*border: 1px solid #ccc;*/
+				overflow-y: scroll;
+				overflow-x: hidden;
+			}
+			
+			.chat_input {
+				width: 100%;
+				height: auto;
+				/*border: 2px solid #E3E8ED;*/
+				/*margin: 10px 0px;*/
+				/*border-radius: 10px;*/
+				overflow: hidden;
+			}
+			
+			.write {
+				width: 586px;
+				height: 80px;
+				padding: 10px;
+				padding-bottom: 0;
+				overflow: auto;
+				overflow-y: hidden;
+				outline: 0;
+				border: 2px solid #E3E8ED;
+				border-bottom: 0;
+			}
+			
+			.tj {
+				width: 100%;
+				background: #E3E8ED;
+				height: 32px;
+				position: relative;
+			}
+			
+			.tj input {
+				float: right;
+				padding: 0 25px;
+				background-color: #7E90A5;
+				outline: none;
+				border: none;
+				height: 32px;
+				cursor: pointer;
+				line-height: 32px;
+				color: #FFF;
+				letter-spacing: 3px;
+			}
+			
+			.tx img {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				border: 0;
+			}
+			
+			.cb_lb{
+				width: 100%;
+				height: 617px;
+			}
+			.cb_lb ul {
+				width: 100%;
+				height: auto;
+			}
+			
+			.cb_lb ul {
+				list-style: none;
+			}
+			
+			.cb_lb ul li {
+				height: 30px;
+				padding: 10px;
+				background: #FFFFFF;
+			}
+			
+			.cb_lb ul li:hover {
+				background: #F4F6F8;
+			}
+			
+			.cb_lb ul li img {
+				width: 30px;
+				height: 30px;
+				float: left;
+			}
+			
+			.cb_lb ul li span {
+				line-height: 30px;
+				display: block;
+				float: left;
+				margin: 0px 20px 0px 10px;
+			}
+			
+			.cb_lb ul li small {
+				width: 10px;
+				height: 10px;
+				display: block;
+				border-radius: 50%;
+				float: left;
+				margin-top: 10px;
+			}
+			
+			.online {
+				background: #57B869;
+			}
+			
+			.offline {
+				background: #BDBDBD;
+			}
+			
+			.lb_fl b {
+				margin-top: 6px;
+			}
+			
+			.lb_fl li {
+				position: relative;
+			}
+			
+			.lb_fl li b {
+				position: relative;
+				font-size: 15px;
+				top: 0;
+				right: 0;
+				float: left;
+				transition: all 0.5s;
+			}
+			
+			ul.lb_fl li span {
+				margin-left: 5px;
+			}
+			
+			.off {
+				display: none;
+			}
+			
+			.on {
+				display: block;
+			}
+			
+			.yjcd {
+				position: absolute;
+				z-index: 999;
+				display: none;
+				width: 120px;
+				height: 200px;
+				border: 1px solid #176994;
+				background: #FFFFFF;
+				/*right: 0;*/
+				box-shadow: 1px 1px 3px #444;
+			}
+			.yjcd ul{
+				list-style: none;
+			}
+			.cb_lb.scroll {
+				overflow-y: scroll;
+				overflow-x: hidden;
+			}
+			 .yjcd #add_gn li{
+				height: 30px;
+				padding: 0;
+				border-bottom: 1px solid #ccc;
+			}
+			 .yjcd #add_gn li a{
+				text-decoration: none;
+				color: #444444;line-height: 30px;
+				display: block;
+				/*margin: 0px auto;*/
+				padding: 0px 26px;
+			}
+			.chat li{
+				width: 100%;
+				list-style: none;
+				height: auto;
+				margin: 10px 0px;
+			}
+			.chat li img{
+				width:40px;
+				height: 40px;
+				border-radius: 50%;
+				border: 0;
+				display: block;
+				float: left;
+			}
+			.chat li.me img{
+				float: right;
+				margin-right: 3px;
+			}
+			.chat li small{
+				font-size: 12px;
+				color: #CCCCCC;
+				display: block;
+				margin: 0 auto;
+				text-align: center;
+			}
+			.chat li span.nr{
+				/*width: 90%;*/
+				background: #176994;
+				padding: 10px;display:inline-block;
+				color: #FFFFFF;  margin-left: 10px;
+				border-radius: 5px;
+			}
+			.chat li.df em{
+				border: 0;position: absolute;
+				border-top:15px solid #176994;
+				border-left:15px solid transparent;
+				        top: 10px;
+                        left: -5px;
+                  
+			}
+			.chat li.me em{
+				/*width: 20px;height: 20px;*/
+				border: 0;position: absolute;
+				border-top:15px solid lightseagreen;
+				border-right:15px solid transparent;
+				       top: 9px;
+                       right: -15px;
+			}
+			.chat li.me span.nr{
+				background: lightseagreen;
+				float: right;
+				
+			}	
+		
+					div.dh{
+				width: 90%;
+                margin: 11px 0px 5px 46px;
+			}
+			.me div.dh{
+				width: 90%;
+                margin: 11px 0px 5px 0px;
+			}
+			div.dh{
+				position: relative;
+			}
+			#add_gn li a:hover{
+				background: #eee;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div class="chat_box">
+			<div class="chat_top tx">
+				<img src="img/a1.jpg" />
+				<span>哈哈</span>
+
+				<b>×</b>
+			</div>
+			<!--对话  输入框-->
+			<div class="main">
+
+				<div class="" style="padding:0px 0px 0px 20px;">
+					<div class="chat">
+					 <ul style="width: 100%;height: auto;">
+					 	<li class="df">
+					 	<small>2017/1/2 10:20:45</small>
+					 	<img src="img/a1.jpg"/> 
+					 	<div class="dh">
+					 		<span class="nr">内容内容内容容内容</span>
+					 		<em ></em>
+					 		<div style="clear: both;"></div>
+					 	</div>
+					 	
+					 </li>
+					
+					 <li class="me" >
+					 	<small>2017/1/2 10:20:45</small>
+					 	<img src="img/a2.jpg"/> 
+					 	<div class="dh" >
+					 		<span class="nr" >内容内内容内容内容内容容内内容内容内容内容容内内容内容内容内容内容</span>
+					 		<em ></em>
+					 		<div style="clear: both;"></div>
+					 	</div>
+					 	
+					 </li>
+					 <li class="me">
+					 	<small>2017/1/2 10:20:45</small>
+					 	<img src="img/a2.jpg"/> 
+					 	<div class="dh" >
+					 		<span class="nr" >内容内内容内容内容内容</span>
+					 		<em ></em>
+					 		<div style="clear: both;"></div>
+					 	</div>
+					 	
+					 </li>
+                       <li class="df">
+					 	<small>2017/1/2 10:20:45</small>
+					 	<img src="img/a1.jpg"/> 
+					 	<div class="dh">
+					 		<span class="nr">内容内容内容容内容</span>
+					 		<em ></em>
+					 		<div style="clear: both;"></div>
+					 	</div>
+					 	
+					 </li>
+					 </ul>
+					</div>
+				</div>
+                <div class="chat_input">
+							<div class="write" contenteditable="true">
+
+							</div>
+							<div class="tj" style="">
+								<input type="submit" class="sub" value="发送" />
+								<!--<input type="submit" value="关闭"/>-->
+
+							</div>
+
+
+					</div>
+					<script type="text/javascript">
+						$(".sub").click(function(){
+							var textCon=$(".write").text();
+							console.log(textCon);
+							var htmlData='<li class="me"><small>2017/1/2 10:20:45</small><img src="img/a2.jpg"/>'
+							+'<div class="dh" ><span class="nr" >'+textCon+'</span><em ></em><div style="clear: both;"></div></div></li>';
+							$(".chat ul").append(htmlData);
+						})
+					</script>
+					
+			</div>
+			<!--侧边-->
+			<div class="chat_cb" style="overflow: hidden;">
+				<div class="cb_title">
+					<span>用户列表</span>
+				</div>
+				<div class="cb_lb tx" style="overflow-x: hidden;overflow-y: scroll;">
+					<ul class="lb_fl" >
+						<li class="fllb">
+							<b class="on">▶ </b>
+							<b class="off">▼</b>
+							<span style="">我的好友</span>
+						</li>
+						<ul class="fl" style="display: none;">
+							<li style="position: relative;">
+								<img src="img/a1.jpg" />
+								<span>哈哈</span>
+								<small class="online"></small>
+                                <!--右键菜单-->
+								<!--<div class="yjcd">
+                                  
+								</div>-->
+							</li>
+							<li>
+								<img src="img/a2.jpg" />
+								<span>呵呵</span>
+								<small class="offline"></small>
+								
+								 <!--右键菜单-->
+								<!--<div class="yjcd">
+                                  
+								</div>-->
+							</li>
+						</ul>
+
+						<li class="fllb">
+							<b class="on">▶ </b>
+							<b class="off">▼</b>
+							<span style="">我的朋友</span>
+						</li>
+						<ul class="fl" style="display: none;">
+							<li>
+								<img src="img/a1.jpg" />
+								<span>哈哈</span>
+								<small class="online"></small>
+							</li>
+							<li>
+								<img src="img/a2.jpg" />
+								<span>呵呵</span>
+								<small class="offline"></small>
+							</li>
+						</ul>
+				
+					</ul>
+
+				</div>
+			</div>
+		</div>
+		<!--右键菜单-->
+		<div class="yjcd">
+            <ul id='add_gn'>
+            	<li><a href=''>查看资料</a></li>
+            <li><a href=''>发送消息</a></li>
+            <li><a href=''>消息记录</a></li>
+            <li><a href=''>消录</a></li> </ul>                      
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	//屏蔽鼠标右击系统默认的菜单
+	$(".cb_lb").bind('contextmenu', function() {
+		return false;
+	});
+
+	$(function() {
+
+				$("li.fllb ").each(function(e) {
+					var i = e;
+					$(this).click(function() {
+						$(this).find("b").eq(0).toggle();
+						$(this).find("b").eq(1).toggle();
+//						console.log(i);
+						$("ul.fl").eq(i).slideToggle(100);
+
+					})
+				});
+				$("ul.fl li").each(function() {
+					$(this).click(function() {
+						$("ul.fl li").css("background", "#ffffff");
+						$(this).css("background", "#ccc");
+					})
+				});
+				
+				
+					$(document).bind('click',function(){  
+						$('.yjcd').hide(); 
+					});
+					//右键菜单
+					$("ul.fl li").each(function(){
+						$(this).mouseup(function(e) {
+//							console.log(document.body.scrollLeft+event.clientX-1);
+//							console.log(document.body.scrollTop+event.clientY+1);
+						if(3 == e.which) {
+							// 	e.preventDefault();
+							$('.yjcd').hide();
+//							$(".yjcd").html("");
+							$(".yjcd").css("left",document.body.scrollLeft+event.clientX+1);
+							$(".yjcd").css("top",document.body.scrollTop+event.clientY+1);
+							$(".yjcd").show();
+						}
+						stopPropagation(e);
+					});
+					});
+
+			});
+	function stopPropagation(e) {
+			if(e.stopPropagation) 
+			  e.stopPropagation(); //停止冒泡  非ie
+			else 
+			  e.cancelBubble = true;//停止冒泡 ie
+					} ;
+	
+</script>
