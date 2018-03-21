@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>weui</title>
+
+<link rel="stylesheet" href="css/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.min.css">
+<style>
+ul{
+  list-style: none;
+}
+       #xzw_starSys{height: 30px;width: 300px;}
+#xzw_starBox{position:relative;width:120px;}
+
+#xzw_starSys .description{float: left;padding:2px 10px}
+#xzw_starSys .star{height:20px;width:120px;float: left; position:relative;background:url(img/lanrentuku.png) repeat-x;cursor:pointer}
+#xzw_starSys .star li{float:left;padding:0px;margin:0px}
+#xzw_starSys .star li a{display:block;width:24px;height:20px;overflow:hidden;text-indent:-9999px;position:absolute;z-index:5}
+#xzw_starSys .star li a:hover{background:url(img/lanrentuku.png) 0 -25px repeat-x;z-index:3;left:0}
+#xzw_starSys .star a.one-star{left:0}
+#xzw_starSys .star a.one-star:hover{width:24px}
+#xzw_starSys .star a.two-stars{left:24px}
+#xzw_starSys .star a.two-stars:hover{width:48px}
+#xzw_starSys .star a.three-stars{left:48px}
+#xzw_starSys .star a.three-stars:hover{width:72px}
+#xzw_starSys .star a.four-stars{left:72px}
+#xzw_starSys .star a.four-stars:hover{width:96px}
+#xzw_starSys .star a.five-stars{left:96px}
+#xzw_starSys .star a.five-stars:hover{width:120px}
+#xzw_starSys .current-rating{background:url(img/lanrentuku.png) 0 -25px repeat-x;position:absolute;height:20px;z-index:1;top:0;left:0}
+
+
+</style>
+</head>
+<body>
+   <div class="weui-cells weui-cells_form">
+	        <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">客户</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="kh" type="text"  placeholder="请输入">
+        </div>
+        <div class="weui-cell__ft" style="display:none;">
+          <i class="weui-icon-warn"></i>
+        </div>
+      </div>
+
+<div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">销售项目</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="kh" type="text"  placeholder="请输入">
+        </div>
+        <div class="weui-cell__ft" style="display:none;">
+          <i class="weui-icon-warn"></i>
+        </div>
+      </div>
+
+<div class="weui-cell weui-cell_select">
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="select1">
+            <option selected="" value="1">微信号</option>
+            <option value="2">QQ号</option>
+            <option value="3">Email</option>
+          </select>
+        </div>
+      </div>
+
+<div class="weui-cell weui-cell_select weui-cell_select-before">
+        <div class="weui-cell__hd">
+          <select class="weui-select" name="select2">
+            <option value="1">+86</option>
+            <option value="2">+80</option>
+            <option value="3">+84</option>
+            <option value="4">+87</option>
+          </select>
+        </div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入号码">
+        </div>
+      </div>
+
+
+     <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">电话</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="tel" value="">
+        </div>
+      </div>
+
+     <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="date" value="">
+        </div>
+      </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">评价:</label></div>
+        <div class="weui-cell__bd">
+          <div id="xzw_starSys">
+  <div id="xzw_starBox">
+    <ul class="star" id="star">
+      <li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+      <li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+      <li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+      <li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+      <li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+    </ul>
+    <div class="current-rating" id="showb"></div>
+  </div>
+  
+  <div class="description"></div>
+</div>
+        </div>
+      </div>
+     <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="date" type="date" value="">
+        </div>
+      </div>
+
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <textarea  id="wby1" class="weui-textarea" placeholder="请输入文本" rows="3"></textarea>
+          <div class="weui-textarea-counter"><span>0</span>/200</div>
+        </div>
+      </div>
+
+            <div class="weui-cell" style="    -webkit-box-align: start;-webkit-align-items: start; align-items: start;">
+              <div class="weui-cell__hd"><label for="" class="weui-label">内容:</label></div>
+        <div class="weui-cell__bd">
+          <div class="" id="wby2" placeholder="请输入文本" style="    min-height: 90px;border:1px solid #ccc" contenteditable="true"></div>
+         
+        </div>
+      </div>
+    
+
+      <a href="javascript:;" id="submit" style="margin:30px" class="weui-btn weui-btn_primary">主按钮</a>
+    </div>
+</body>
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery-weui.min.js"></script>
+</html>
+<script type="text/javascript">
+  $(function(){
+
+      $("#date").calendar({
+        onChange: function (p, values, displayValues) {
+          console.log(values, displayValues);
+        }
+      });
+
+
+      $('#submit').click(function(){
+        if($('#kh').val()==""){
+          $.toast("客户必填！", "text");
+          $('#kh').focus();
+        }
+       else if($('#wby1').val()==""){
+          $.toast("文本域必填！", "text");
+          $('#wby1').focus();
+        }
+        else if($('#wby2').val()==""){
+          $.toast("文本域必填！", "text");
+          $('#wby2').focus();
+        }
+      })
+
+
+  })
+</script>
+<script type="text/javascript">
+              //star
+$(document).ready(function(){
+    var stepW = 24;
+    var description = new Array("很差","差","一般","好","很好");
+    var stars = $("#star > li");
+    var descriptionTemp;
+    $("#showb").css("width",0);
+    stars.each(function(i){
+        $(stars[i]).click(function(e){
+            var n = i+1;
+            $("#showb").css({"width":stepW*n});
+            descriptionTemp = description[i];
+            $(this).find('a').blur();
+            return stopDefault(e);
+            return descriptionTemp;
+        });
+    });
+    stars.each(function(i){
+        $(stars[i]).hover(
+            function(){
+                $(".description").text(description[i]);
+            },
+            function(){
+                if(descriptionTemp != null)
+                    $(".description").text("评价："+descriptionTemp);
+                else 
+                    $(".description").text(" ");
+            }
+        );
+    });
+});
+function stopDefault(e){
+    if(e && e.preventDefault)
+           e.preventDefault();
+    else
+           window.event.returnValue = false;
+    return false;
+};
+            </script>
