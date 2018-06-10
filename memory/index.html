@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			.clear:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			
+			.memory {
+				width: 288px;
+				margin: 0 auto;
+			}
+			
+			.main ul li {
+				width: 50px;
+				height: 50px;
+				border-radius: 5px;
+				border: 1px solid #ccc;
+				background: #ddd;
+				margin: 5px;
+				float: left;
+			}
+			
+			.main ul li .per {
+				visibility: hidden;
+				width: 100%;
+				height: 100%;
+				transition: all .3s;
+			}
+			
+			.main ul li .per.show {
+				visibility: visible;
+				
+				 transform:rotateY(180deg);
+			}
+			.reset{
+				float: left;
+			}
+			.resault{
+				float: left;
+				margin-left:20px ;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="memory">
+
+			<div class="top clear">
+				<button class="reset">再次挑战</button>
+				<div class="resault"></div>
+			</div>
+
+			<div class="main">
+				<ul class="clear">
+
+				</ul>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var bgcolor = ['red', 'blue', 'orangered', 'green', 'purple', 'black'];
+			var copybg = [...bgcolor, ...bgcolor]; //es6 扩展运算符  将一个数组转为用逗号分隔的参数序列
+
+			//随机打乱数组
+			copybg.sort(autoSort); //往autoSort中两两传入数组元素
+			creategame();
+			go('.memory li');
+			//重置
+			$('.reset').click(function() {
+				$('.memory ul').children().remove();
+				copybg.sort(autoSort);
+				creategame();
+				go('.memory li');
+			})
+			//创建板块
+			function creategame() {
+				var html = '<li><div class="per"></div></li>';
+				var num = 12;
+				for(var i = 0; i <= num - 1; i++) {
+					$('.memory ul').append(html);
+				}
+			}
+
+			function go(o) {
+				$(o).each(function(e) {
+					$(this).find('.per').css('background', copybg[e]);
+					$(this).click(function() {
+						$(this).find('.per').addClass('show');
+						//判断是否已选择一个
+						if($('.per.cur').length == 0) {
+							$(this).find('.per').addClass('cur');
+						} else {
+
+							if($(this).find('.per').css('background') == $('.per.cur').css('background')) {
+								//判断是否最后一对
+								if($('.per').length <= 2) {
+									$('.resault').text('成功！');
+								}
+								//一样移除
+								setTimeout(function() {
+									$('.per.show').parent('li').remove();
+									$('.per.cur').parent('li').remove();
+								}, 200);
+
+							} else {
+								//不一样修改标记
+								$('.per.cur').addClass('prev').removeClass('cur');
+								$(this).find('.per').addClass('cur');
+								//隐藏
+								setTimeout(function() {
+									$('.per.prev').removeClass('show');
+									$('.per.prev').removeClass('prev');
+									$('.per.cur').removeClass('show').removeClass('cur');
+								}, 300);
+							}
+						}
+					})
+				})
+			}
+
+			function autoSort(a, b) {
+				//生成随机数跟0.5比较
+				return Math.random() >= 0.5 ? 1 : -1;
+			}
+		</script>
+	</body>
+
+</html>
