@@ -1,109 +1,521 @@
 <!DOCTYPE html>
-<html>
+<!-- saved from url=(0081)file:///C:/Users/ADMINI~1/AppData/Local/Temp/Rar$EXa0.800/cv-template/index.html# -->
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>我的简历</title>
+	<style type="text/css">
+		@font-face {font-family: 'iconfont';
+			src: url('css/fonts/iconfont.eot'); /* IE9*/
+			src: url('css/fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('css/fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+			url('css/fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+			url('css/fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+		}
 
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-		<title>zq-personalreasume</title>
-		<script src="js/SpryTabbedPanels.js" type="text/javascript"></script>
-		<link href="css/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
-        <link href="css/index.css" rel="stylesheet" type="text/css" />
-	</head>
 
-	<body>
-		<div id="nav">
-			<ul>
-				<li><a href="#jyjl">教育经历</a></li>
-				<li><a href="#zyjn">专业技能</a></li>
-				<li><a href="#grjl">个人经历</a></li>
-				<li><a href="#zwpj">自我评价</a></li>
+		.icon-work:before { content: "\eac9"; }
+		.icon-project:before { content: "\eaf4"; }
+		.icon-phone:before { content: "\ec7a"; }
+		.icon-stars:before { content: "\ed32"; }
+		.icon-star:before { content: "\ed1d"; }
+		.icon-person:before { content: "\ec88"; }
+		.icon-librarybooks:before { content: "\ebf9"; }
+		.icon-education:before { content: "\ebca"; }
+		.icon-create:before { content: "\eaf8"; }
+		.icon-call:before { content: "\eab6"; }
+		.icon-weixin:before { content: "\3488"; }
+		.icon-build:before { content: "\eaa2"; }
+		.icon-edit:before { content: "\eb31"; }
+		.icon-flower:before { content: "\ec0a"; }
+		.icon-playlistadd:before { content: "\ecae"; }
+		.icon-delete:before { content: "\e61b"; }
+		.icon-trophy:before { content: "\e80b"; }
+
+		span {
+			display: inline-block;
+		}
+
+		.label-value{
+			width: 200px;
+			vertical-align: top;
+		}
+
+		.iconfont {
+			font-family:"iconfont" !important;
+			font-size:1.1em;font-style:normal;
+			color:inherit;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		h1, h2, h3, h4, h5 {
+			font-weight: 500;
+			color: #607d8b;
+			line-height: 1.5;
+		}
+
+		.progress-list div {
+			width: 100%;
+			margin-left: 200px;
+		}
+
+		.info-list, .progress-list{
+			list-style: none;
+			padding-left: 0px;
+			font-size: 16px;
+			line-height: 2;
+		}
+
+		.stack-list {
+			list-style: none;
+			padding-left: 0px;
+			line-height: 1.5;
+		}
+
+		.stack-list li {
+			margin-bottom: 12px;
+		}
+
+		.right-list li {
+			margin-bottom: 12px;
+		}
+
+
+		hr {
+			margin-bottom: 8px;
+		}
+
+		.info-unit {
+			color: #444;
+			margin-bottom: 20px;
+		}
+
+		.remodal-img h3 {
+			float: left;
+			margin-bottom: 10px;
+		}
+
+		.remodal-img input {
+			float: left;
+			width: 480px;
+			height: 42px;
+			font-size: 20px;
+			padding: 6px;
+			color: #666;
+
+		}
+
+		.remodal-img button {
+			float: right;
+			background: #607d8b;
+
+		}
+
+		.remodal-img button:hover{
+			float: right;
+			background: #607d8b;
+
+		}
+
+
+		body {
+			background-color: lightslategray;
+			font-family: sans-serif, Microsoft Yahei, Helvetica Neue;
+			zoom: 80%;
+		}
+
+		footer {
+		}
+
+		p {
+			line-height: 1.5;
+		}
+
+		progress {
+			background-color: #f6f6f6;
+			display: inline;
+			/*width: 195px;*/
+			height: 1em;
+
+		}
+
+		progress::-webkit-progress-bar {
+			background-color: #e0eaf0;
+		}
+
+		progress::-webkit-progress-value {
+			background-color: #708d9b;
+		}
+
+		progress::-moz-progress-bar {
+			background-color: #e0eaf0;
+
+		}
+
+		progress::-moz-progress-value {
+			background-color: #708d9b;
+		}
+
+		.progress-list {
+			line-height: 2;
+		}
+
+
+
+		.me {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.weixin{
+			margin-top: 20px;
+			background-color: #e0eaf0;
+			position: relative;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			text-align: center;
+		}
+
+		.weixin img{
+			width: 200px;
+		}
+
+		.left-label {
+			display: inline-block;
+			width: 120px;
+		}
+
+		.portrait {
+			margin: 0 auto;
+			margin-top:20px;
+			margin-bottom: 10px;
+			background-image:url(img/11.png);
+			background-size: 120%;
+			background-position:center;
+			border-radius:50%;
+			border:5px solid #607d8b;
+			width:160px;
+			height:160px;
+		}
+
+
+		.container {
+			position: relative;
+			margin: 0 auto;
+
+			width: 1050px;
+			height: 1550px;
+			background-color: white;
+
+		}
+
+		.side {
+			position: absolute;
+			width: 360px;
+			height: 100%;
+			background-color: whitesmoke;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.main {
+
+			position: relative;;
+			margin-left: 360px;
+			min-height: 100%;
+			padding: 20px;
+
+		}
+
+		.info-header:hover {
+			background-color: #d4dee4;
+		}
+
+		.info-unit ul li:hover {
+			background-color: #d4dee4;
+		}
+
+		.info-header .unit-remove {
+			float: right;
+			margin-left: 20px;
+			visibility: hidden;
+			cursor: pointer;
+
+		}
+
+		.info-header .item-add {
+			float: right;
+			margin-left: 20px;
+			margin-right: 2px;
+			visibility: hidden;
+			cursor: pointer;
+
+		}
+
+		.item-remove {
+			position: absolute;
+			right: 2px;
+			margin-right: 2px;
+			visibility: hidden;
+			cursor: pointer;
+
+		}
+
+		ul li{
+			position: relative;
+		}
+
+		.experience-list .item-remove {
+			position: absolute;
+			right: 2px;
+			top: 0px;
+			margin-right: 2px;
+			visibility: hidden;
+			cursor: pointer;
+
+		}
+
+		.stack-list .item-remove {
+			position: absolute;
+			right: 2px;
+			top: 0px;
+			margin-right: 2px;
+			visibility: hidden;
+			cursor: pointer;
+
+		}
+
+
+
+	</style>
+</head>
+
+<body style="padding-right: 0px;">
+<div class="container" id="cv">
+	<div class="side">
+		<div class="me">
+			<div class="portrait" ></div>
+
+			<h1 id="username" contenteditable="true">张巧</h1>
+			<h4 id="persona-tag" contenteditable="true">Web前端开发/App开发</h4>
+		</div>
+		<div class="profile info-unit">
+			<h2 class="info-header"><i class="iconfont icon-person"></i> <span class="info-title" contenteditable="true">基本信息</span><span class="item-add" style="visibility: hidden;"><i class="iconfont icon-playlistadd"></i></span><span class="unit-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></h2>
+			<hr>
+			<ul class="info-list">
+				<li>
+					<label class="left-label" contenteditable="true">姓名</label><span class="label-value" contenteditable="true">张巧</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">学历</label><span class="label-value" contenteditable="true">大专</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">政治面貌</label><span class="label-value" contenteditable="true">中共党员</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">毕业院校</label><span class="label-value" contenteditable="true">文华学院</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">毕业年份</label><span class="label-value" contenteditable="true">2017.6</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">籍贯</label><span class="label-value" contenteditable="true">湖北襄阳</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+
 			</ul>
 		</div>
-		<div id="index">
-			<ul>
-				<li><a href="#">姓名：张巧</a></li>
-				<li><a href="#">性别：女</a></li>
-				<li><a href="#">民族：汉</a></li>
-				<li><a href="#">政治面貌：中共党员</a></li>
-				<li><a href="#">籍贯：湖北襄阳</a></li>
-				<li><a href="#">Tel：13476260156</a></li>
-				<li><a href="#">QQ：1226937462</a></li>
-				<li><a href="#">E-mail：1226937462@qq.com</a></li>
+		<div class="contact info-unit">
+			<h2 class="info-header"><i class="iconfont icon-call"></i> <span class="info-title" contenteditable="true">联系方式</span><span class="item-add" style="visibility: hidden;"><i class="iconfont icon-playlistadd"></i></span><span class="unit-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></h2>
+			<hr>
+			<ul class="info-list">
+				<li>
+					<label class="left-label" contenteditable="true">手机</label><span class="label-value" contenteditable="true">13476260156</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">微信</label><span class="label-value" contenteditable="true">13476260156</span><span class="item-remove" style="visibility: hidden;"></span></li>
+
+				<li>
+					<label class="left-label" contenteditable="true">邮箱</label><span class="label-value" contenteditable="true">1226937462@qq.com</span><span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
 			</ul>
 		</div>
-		<div id="jyjl">
-			教育经历<br />
-			<img src="img/01.png" /><br /><br />
-			<div id="jyjl-tw">
-				<div id="jyjl-img">
-					<img src="img/img1.png" />
-				</div>
-				<div id="jyjl-content">
-					<br />
-					<p>2014.9-2017.6 文华学院 计算机应用技术 大专</p><br />
-					<ul>
-						<li>两年专业排名第一</li>
-						<li>荣获国家励志奖学金和一等奖学金</li>
-						<li>荣获“三好学生”称号</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div id="zyjn">
-			专业技能<br />
-			<img src="img/01.png" /><br />
-			<div id="TabbedPanels1" class="TabbedPanels">
-				<ul class="TabbedPanelsTabGroup">
-					<li class="TabbedPanelsTab" tabindex="0">主修</li>
-					<li class="TabbedPanelsTab" tabindex="0">精通</li>
-				</ul>
-				<div class="TabbedPanelsContentGroup">
-					<div class="TabbedPanelsContent"><strong>主修课程</strong> <br/> C语言，Java，photoshop，office办公软件，数据结构
-						<br/> Html+css+JavaScript，flash，JSP应用与开发，数据库原理及应用
-						<br/> PHP web开发，汇编语言，操作系统，网络配置<br/> Android项目开发，软件工程
-
-					</div>
-					<div class="TabbedPanelsContent"><strong>精通</strong>
-						<p>Ps，html，css，js，php，数据库，办公软件</p>
-					</div>
-				</div>
-			</div>
-			<script type="text/javascript">
-				var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
-			</script>
-		</div>
-		<div id="grjl">
-			个人经历<br />
-			<img src="img/01.png" />
-			<p>做过网页设计与制作的课程设计，对于html，div+css精通 </p>
-			<p>用JSP做动态登录显示界面 </p>
-			<p>用mysql+jsp做简单学生成绩管理系统，实现增删改查操作 </p>
-			<p>C语言选修课和同学们一起做指法练习小游戏 </p>
-			<p>一直是班上的学习委员，曾获“优秀班干部”，“优秀入党积极分子”等称号</p>
-			<p>参加省英语翻译大赛获三等奖，以及参加省蓝桥杯c语言大赛 </p>
-			<p> 2016.6在校做html5及Android生产实习 </p>
-			<p>暑假期间在襄阳蜂窝网络科技公司做网页设计</p>
-
-		</div>
-		<div id="zwpj">
-			自我评价<br />
-			<img src="img/01.png" /><br />
-			<fieldset>
-				<legend>性格方面</legend>文静礼貌，积极向上，为人友善，很好相处</fieldset>
-			<fieldset>
-				<legend>工作方面</legend>积极热情，有责任心，认真务实，具有良好的团队合作意识和集体荣誉</fieldset>
-		</div>
-		<div id="footer">
-			<ul>
-				<li><a href="#">联系我</a></li>
-				<li><a href="#">联系我</a></li>
-				<li><a href="#">联系我</a></li>
-				<li><a href="#">联系我</a></li>
-				<li><a href="#">联系我</a></li>
-				<li><a href="#">联系我</a></li>
+		<div class="skill info-unit">
+			<h2 class="info-header"><i class="iconfont icon-star"></i> <span class="info-title" contenteditable="true">专业技能</span><span class="item-add" style="visibility: hidden;"><i class="iconfont icon-playlistadd"></i></span><span class="unit-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></h2>
+			<hr>
+			<ul class="progress-list">
+				<li>
+					<label class="left-label" contenteditable="true">HTML、CSS</label>
+					<progress value="95" max="100"></progress>
+					<span class="item-remove" style="visibility: hidden;"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">Javascript</label>
+					<progress value="90" max="100"></progress>
+					<span class="item-remove" style="visibility: hidden;"></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">React</label>
+					<progress value="90" max="100"></progress>
+					<span class="item-remove" style="visibility: hidden;"></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">AngularJs</label>
+					<progress value="90" max="100"></progress>
+					<span class="item-remove" style="visibility: hidden;"></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">PS</label>
+					<progress value="90" max="100"></progress>
+					<span class="item-remove" style="visibility: hidden;"></i></span></li>
 			</ul>
-			<address>&copy;2014-2017湖北省武汉市文华学院张巧个人 版权所有 </address>
 		</div>
-	</body>
+		<div class="stack info-unit">
+			<h2 class="info-header"><i class="iconfont icon-build"></i> <span class="info-title" contenteditable="true">技术栈</span><span class="item-add"><i class="iconfont icon-playlistadd"></i></span><span class="unit-remove"></span></h2>
+			<hr>
+			<ul class="stack-list">
+				<li>
+					<label class="left-label" contenteditable="true">前端</label><span class="label-value" contenteditable="true">熟悉HTML+CSS，JS，Jquery，React生态系统,VueJs,常用前端框架React,Bootstrap,Antd,了解nodeJs,Restful架构,Graphql</span><span class="item-remove"></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">移动端</label><span class="label-value" contenteditable="true">react-native,Ionic开发</span><span class="item-remove"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<label class="left-label" contenteditable="true">后端</label><span class="label-value" contenteditable="true">了解Php、Jsp、Node、MySQL</span><span class="item-remove"><i class="iconfont icon-delete"></i></span></li>
 
+				<li>
+					<label class="left-label" contenteditable="true">其它</label><span class="label-value" contenteditable="true">Web,Android/IOS兼容性问题解决、响应式布局设计、常用编写工具,git使用</span><span class="item-remove"><i class="iconfont icon-delete"></i></span></li>
+
+			</ul>
+		</div>
+
+		<!--<div class="code info-unit">
+            <h2 class="info-header"><i class="iconfont icon-weixin"></i> <span class="info-title" contenteditable="true">个人微信</span><span class="unit-remove"><i class="iconfont icon-delete"></i></span></h2>
+            <hr>
+            <div class="weixin">
+                <img src="img/wx.jpg" alt="">
+
+            </div>
+        </div>-->
+
+	</div>
+	<div class="main">
+		<div class="education info-unit right-list">
+			<h2 class="info-header"><i class="iconfont icon-education"></i> <span class="info-title" contenteditable="true">教育经历</span><span class="item-add" style="visibility: hidden;"><i class="iconfont icon-playlistadd"></i></span><span class="unit-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></h2>
+			<hr>
+			<ul class="experience-list">
+				<li>
+					<h3 contenteditable="true">文华学院 - 计算机应用专业  （2014-2017)</h3>
+					<p contenteditable="true">
+						大学期间， 担任班上的学习委员，成绩一直保持在专业排名第一;<br />
+						曾荣获国家励志奖学金和一等奖学金，及“三好学生”称号；<br />
+						在学习部担任干事，积极参加活动，荣获“优秀干事”称号；<br />
+						课余参加蓝桥杯获 C 语言 C 组三等奖，湖北省外语翻译大赛三等奖。
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+			</ul>
+		</div>
+		<div class="work info-unit right-list">
+			<h2 class="info-header"><i class="iconfont icon-work"></i>
+				<span class="info-title" contenteditable="true">个人经历</span>
+				<span class="item-add" style="visibility: hidden;"><i class="iconfont icon-playlistadd"></i></span><span class="unit-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></h2>
+			<hr>
+			<ul class="experience-list">
+				<li>
+					<h3 contenteditable="true">在校实践经历</h3>
+					<p contenteditable="true">
+						• 	做过网页设计与制作的课程设计，对于html5+css精通 <br />
+						• 	用JSP做动态登录显示界面<br />
+						• 	用mysql+jsp做简单学生成绩管理系统，实现增删改查操作<br />
+						• 	C语言选修课和同学们一起做指法练习小游戏<br />
+						• 	2016.6在校做html5及Android的生产实习<br />
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<h3 contenteditable="true">武汉洛比科技有限公司－实习+工作（2016.11——2018.6）</h3>
+					<p contenteditable="true">
+						根据公司需求学习并运用不同的前端框架，比如：Bootstrap，Ionic，AngularJs，通
+						过前期的沉淀，专业技能有了明显的提升；<br />
+						后期参与系统样式的调整及兼容性问题解决，通过在不同浏览器的调试与修改，满足
+						最大化兼容效果；负责过后勤网站首页 UI 设计，系统登录页设计，系统框架搭建，系
+						统 APP 整套前端开发；结合后台需求，做 Demo，给以运用。
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<h3 contenteditable="true">武汉欣克信息技术有限公司－工作（2018.7——至今）</h3>
+					<p contenteditable="true">
+						从事前端开发工作，期间和意大利团队进行过协同开发，公司主要业务是数据分析，做车险，旅游险，宠物险报价，消费单数据智能识别处理等<br />
+						工作中主要应用框架：react,react-native<br />
+						管理工具:git
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+			</ul>
+		</div>
+		<div class="project info-unit right-list">
+			<h2 class="info-header"><i class="iconfont icon-project"></i> <span class="info-title" contenteditable="true">项目经验</span><span class="item-add" style="visibility: hidden;"><i class="iconfont icon-playlistadd"></i></span><span class="unit-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></h2>
+			<hr>
+			<ul class="experience-list">
+				<li>
+					<h3 contenteditable="true">旅游网站 </h3>
+					<p contenteditable="true">
+						用 Php+Mysql 开发的一个旅游网站，用户可以发布游记，发布组团信息，参
+						团，留言，登录注册等。
+						<br>
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<h3 contenteditable="true">后台系统前端 UI架构设计和搭建 </h3>
+					<p contenteditable="true">
+						参与实验室信息门户、试剂管理系统、住宅系统、大型仪器共享平台 UI 设计与实现；
+						<br>
+						比如用PS做登录、启动页背景图，再用前端技术实现页面效果
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<h3 contenteditable="true">家具、资产APP</h3>
+					<p contenteditable="true">
+						App 主要是用 Ionic 框架混合式开发，一个基于angularJs的框架，通过前端布局，调取
+						接口数据，在客户端展现家具资产的数据分类列表，用户可查看编辑资产信息，审核资产状态等。
+						<br>
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<h3 contenteditable="true">Tariff系统</h3>
+					<p contenteditable="true">
+						主要应用react+react-router+rxjs+bootstrap+axios+react-intl,和意大利方协同开发，我主要负责前端页面、获取接口数据、兼容调试
+						<br>
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<h3 contenteditable="true">消费单智能识别APP</h3>
+					<p contenteditable="true">
+						主要应用react-native+react-reducer+redux-saga实现手机拍消费单据，
+						我主要负责前端开发调用后台接口识别出单据内容，并编辑单据内容，保存单据信息,ios、android兼容调试。<br />
+						第三方库:react-native-camera、react-navigation、react-native-permissions
+						<br>
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<h3 contenteditable="true">Miya-website</h3>
+					<p contenteditable="true">
+						主要应用react，实现一个官方网站，特点是页面全屏滚动、对话形式的表单、多语言。
+						<br>
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+			</ul>
+		</div>
+		<div class="aboutme info-unit right-paragraph">
+			<h2 class="info-header"><i class="iconfont icon-flower"></i> <span class="info-title" contenteditable="true">自我评价</span><span class="unit-remove"><i class="iconfont icon-delete"></i></span></h2>
+			<hr>
+			<ul class="experience-list">
+				<li>
+					<p contenteditable="true">
+						性格方面：文静礼貌，积极向上，为人友善，很好相处
+						<br>
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+				<li>
+					<p contenteditable="true">
+						工作方面：积极热情，有责任心，认真务实，具有良好的团队合作意识和集体荣誉感，
+						抗压力强，有耐性
+					</p>
+					<span class="item-remove" style="visibility: hidden;"><i class="iconfont icon-delete"></i></span></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
 </html>
