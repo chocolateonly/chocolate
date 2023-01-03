@@ -1,0 +1,168 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <title></title>
+
+    <style scoped>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .login-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url(./assets/bg.gif);
+            background-size: 100% 100%;
+        }
+
+        .ms-title {
+            width: 100%;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .ms-login {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 350px;
+            margin: -190px 0 0 -175px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            /*overflow: hidden;*/
+        }
+
+        .ms-content {
+            padding: 30px 30px;
+        }
+
+        .login-btn {
+            text-align: center;
+        }
+
+        .login-btn button {
+            width: 100%;
+            height: 36px;
+            margin-bottom: 10px;
+        }
+
+        .login-tips {
+            font-size: 12px;
+            line-height: 30px;
+            color: #333;
+        }
+        .piaochuang{
+            width: 80%;
+            height: 22px;
+            position: absolute;
+            /*background: #fcc;*/
+            left: 10%;
+            top: -40px;
+            overflow: hidden;
+        }
+        .piaochuang span{
+            /*background: #ccc;*/
+            position: absolute;
+            transform: translateX(-100px);
+        }
+        .piaochuang span.piao{
+            animation: piao 3s linear;
+        }
+        @keyframes piao {
+            0%{
+                transform: translateX(-100px);
+            }
+            100%{
+                transform: translateX(500px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="login-wrap">
+
+
+        <div class="ms-login">
+
+            <!--        飘窗-->
+            <div class="piaochuang">
+                <span :class="submited?'piao':''">
+                    {{param.username}}  {{param.password}}
+                </span>
+            </div>
+
+            <div class="ms-title">大哥号生成系统</div>
+            <el-form :model="param" :rules="rules" ref="login" class="ms-content" label-position="top">
+                <el-form-item prop="username" label="玩家昵称">
+                    <el-input v-model="param.username" placeholder="请输入"></el-input>
+                </el-form-item>
+                <el-form-item prop="password" label="选择区域">
+                    <el-input type="" placeholder="请输入" v-model="param.password"
+                              @keyup.enter="submitForm"></el-input>
+                </el-form-item>
+                <div class="login-btn">
+                    <el-button type="primary" @click="submitForm">报名领取</el-button>
+                </div>
+                <!--				<p class="login-tips">Tips : 用户名和密码随便填。</p>-->
+            </el-form>
+        </div>
+    </div>
+</div>
+<script>
+    const App = {
+        data() {
+            return {
+                param: {
+                    username:'',
+                    password:''
+                },
+                submited:false,
+                rules:{
+
+                },
+                timer:null
+            };
+        },
+        mounted(){
+
+            if(window.localStorage.getItem('select_area')){
+                this.param.password = window.localStorage.getItem('select_area')
+            }
+        },
+        beforeUnmount() {
+            clearTimeout(this.timer)
+        },
+        methods:{
+            submitForm(){
+                if(this.submited) return
+                this.submited = true
+               this.timer =  setTimeout(()=>{
+                    this.submited = false
+                },3000)
+                window.localStorage.setItem('select_area',this.param.password)
+                this.$message({
+                    message: '报名成功！',
+                    grouping: true,
+                    type: 'success',
+                })
+            }
+        }
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
+</body>
+</html>
