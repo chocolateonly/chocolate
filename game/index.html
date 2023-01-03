@@ -1,7 +1,7 @@
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <script src="https://unpkg.com/vue@next"></script>
     <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
@@ -11,10 +11,11 @@
     <title></title>
 
     <style scoped>
-        *{
-            padding:0;
-            margin:0;
+        * {
+            padding: 0;
+            margin: 0;
         }
+
         .login-wrap {
             position: relative;
             width: 100%;
@@ -56,35 +57,38 @@
             height: 36px;
             margin-bottom: 10px;
         }
-
-        .login-tips {
-            font-size: 12px;
-            line-height: 30px;
-            color: #333;
-        }
-        .piaochuang{
-            width: 80%;
-            height: 22px;
+        .piaochuang {
+            width: 100%;
+            height: 28px;
             position: absolute;
             /*background: #fcc;*/
-            left: 10%;
+            left: 0%;
             top: -40px;
             overflow: hidden;
         }
-        .piaochuang span{
+
+        .piaochuang span {
             /*background: #ccc;*/
+            /*width:100%;*/
+
             position: absolute;
-            transform: translateX(-100px);
+            transform: translateX(110%);
+            color: red;
+            font-size: 20px;
+            white-space: nowrap;
+            display: inline-block;
         }
-        .piaochuang span.piao{
+
+        .piaochuang span.piao {
             animation: piao 3s linear;
         }
+
         @keyframes piao {
-            0%{
-                transform: translateX(-100px);
+            0% {
+                transform: translateX(110%);
             }
-            100%{
-                transform: translateX(500px);
+            100% {
+                transform: translateX(-110%);
             }
         }
     </style>
@@ -106,16 +110,15 @@
             <div class="ms-title">大哥号生成系统</div>
             <el-form :model="param" :rules="rules" ref="login" class="ms-content" label-position="top">
                 <el-form-item prop="username" label="玩家昵称">
-                    <el-input v-model="param.username" placeholder="请输入"></el-input>
+                    <el-input v-model="param.username" placeholder="请输入" clearable></el-input>
                 </el-form-item>
                 <el-form-item prop="password" label="选择区域">
-                    <el-input type="" placeholder="请输入" v-model="param.password"
+                    <el-input type="" placeholder="请输入" v-model="param.password" clearable
                               @keyup.enter="submitForm"></el-input>
                 </el-form-item>
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm">报名领取</el-button>
                 </div>
-                <!--				<p class="login-tips">Tips : 用户名和密码随便填。</p>-->
             </el-form>
         </div>
     </div>
@@ -125,33 +128,31 @@
         data() {
             return {
                 param: {
-                    username:'',
-                    password:''
+                    username: '',
+                    password: ''
                 },
-                submited:false,
-                rules:{
-
-                },
-                timer:null
+                submited: false,
+                rules: {},
+                timer: null
             };
         },
-        mounted(){
+        mounted() {
 
-            if(window.localStorage.getItem('select_area')){
+            if (window.localStorage.getItem('select_area')) {
                 this.param.password = window.localStorage.getItem('select_area')
             }
         },
         beforeUnmount() {
             clearTimeout(this.timer)
         },
-        methods:{
-            submitForm(){
-                if(this.submited) return
+        methods: {
+            submitForm() {
+                if (this.submited) return
                 this.submited = true
-               this.timer =  setTimeout(()=>{
+                this.timer = setTimeout(() => {
                     this.submited = false
-                },3000)
-                window.localStorage.setItem('select_area',this.param.password)
+                }, 3500)
+                window.localStorage.setItem('select_area', this.param.password)
                 this.$message({
                     message: '报名成功！',
                     grouping: true,
