@@ -17,12 +17,21 @@
 <!--		</script>-->
 	</head>
 	<body>
-		等待跳转…………
+		等待跳转…………1
 <!--		 <a href="com.mc.phonelive://goods??type=1&sku_id=49273910">商品</a>-->
 		<!--<div></div>
 		<a href="com.mc.phonelive://ecloudsign?id=1">易云章</a> -->
 	</body>
-<script>
-	window.postMessage('clickGoods','*')
-</script>
+	<script type="text/javascript" src="https://unpkg.com/@dcloudio/uni-webview-js@0.0.3/index.js"></script>
+	<script type="text/javascript">
+		// 待触发 `UniAppJSBridgeReady` 事件后，即可调用 uni 的 API。
+		document.addEventListener('UniAppJSBridgeReady', function() {
+			uni.postMessage({
+				data: {
+					action: 'message'
+				}
+			});
+		})
+				</script>
+
 </html>
