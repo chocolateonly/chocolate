@@ -15,6 +15,11 @@
 	</body>
 	<script type="text/javascript" src="https://unpkg.com/@dcloudio/uni-webview-js@0.0.3/index.js"></script>
 	<script type="text/javascript">
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        console.log(isAndroid,isiOS)
+		if(!(isAndroid||isiOS)){
 		var value = location.search
 		if(value){
 			// console.log('value',value)
@@ -25,20 +30,10 @@
 				const [k,v] = e.split('=')
 				data[k] = v
 			})
-			// https://h5.cqmiaocha.cn/pages/goods-detail/goods-detail?source_member=10028&goods_skuid=49058088&goods_id=61
-			// // 商品跳转
-			// if(data.type == 1){
-			// 	// 普通
-			// 	this.$navTo('/pages-shop/ptShop/goods/goodsDetail?sku_id='+data.sku_id)
-			// }else if(data.type == 2){
-			// 	// 药品
-			// 	this.$navTo(`/pages-shop/ypShop/goods/goodsDetail?sku_id=${data.sku_id}`)
-			// }else if(data.type == 3){
-			// 	// 体检
-			// 	this.$navTo('/pages-shop/tjShop/package/detail?sku_id='+data.sku_id)
-			// }
-		}
+			location.href ='https://h5.cqmiaocha.cn/pages/goods-detail/goods-detail'+location.search //?source_member=10028&goods_skuid=49058088&goods_id=61
 
+		}
+		}
 		// 待触发 `UniAppJSBridgeReady` 事件后，即可调用 uni 的 API。
 		document.addEventListener('UniAppJSBridgeReady', function() {
 			uni.postMessage({
