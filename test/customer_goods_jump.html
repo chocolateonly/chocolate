@@ -33,16 +33,16 @@
 
 		}
 		}
-		alert(`${window.innerWidth}-${search}`)
+		// alert(`${window.innerWidth}-${search}`)
 		// 待触发 `UniAppJSBridgeReady` 事件后，即可调用 uni 的 API。
-		// document.addEventListener('UniAppJSBridgeReady', function() {
-		// 	uni.postMessage({
-		// 		data: {
-		// 			action:'postMessage',
-		// 			value:search
-		// 		}
-		// 	});
-		// })
+		document.addEventListener('UniAppJSBridgeReady', function() {
+			uni.postMessage({
+				data: {
+					action:'postMessage',
+					value:search
+				}
+			});
+		})
 				</script>
 
 </html>
