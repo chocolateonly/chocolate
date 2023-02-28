@@ -17,6 +17,7 @@
 	<script type="text/javascript">
 		var value_arr =location.href.split('#').length>0? location.href.split('#')[1].split('/'):[]
         var search = `?type=${value_arr[0]}&goods_skuid=${value_arr[1]}&goods_id=${value_arr[2]}`
+		document.getElementsByTagName('body')[0].append(search)
 		//pc跳转
 		if(window.innerWidth>800){
 		var value = search
