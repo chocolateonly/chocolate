@@ -14,50 +14,53 @@
 		等待跳转…………
 		<div id="wait">点击跳转</div>
 		<div id="search" style="word-break: break-all;"></div>
-	</body>
-	<script type="text/javascript" src="https://unpkg.com/@dcloudio/uni-webview-js@0.0.3/index.js"></script>
-	<script type="text/javascript">
-		var value_arr =location.href.split('#').length>0? location.href.split('#')[1].split('/'):[]
-        var search = `?type=${value_arr[0]}&goods_skuid=${value_arr[1]}&goods_id=${value_arr[2]}`
-		document.getElementById('search').append(search)
-		//pc跳转
-		if(window.innerWidth>800){
-		var value = search
-		if(value){
-			// console.log('value',value)
 
-			let obj_s =	value.split('?')[1]
-			let data = {}
-			obj_s.split('&').forEach(e=>{
-				const [k,v] = e.split('=')
-				data[k] = v
+
+		<script type="text/javascript" src="https://unpkg.com/@dcloudio/uni-webview-js@0.0.3/index.js"></script>
+		<script type="text/javascript">
+			var value_arr =location.href.split('#').length>0? location.href.split('#')[1].split('/'):[]
+			var search = `?type=${value_arr[0]}&goods_skuid=${value_arr[1]}&goods_id=${value_arr[2]}`
+			document.getElementById('search').append(search)
+			//pc跳转
+			if(window.innerWidth>800){
+				var value = search
+				if(value){
+					// console.log('value',value)
+
+					let obj_s =	value.split('?')[1]
+					let data = {}
+					obj_s.split('&').forEach(e=>{
+						const [k,v] = e.split('=')
+						data[k] = v
+					})
+					location.href ='https://h5.cqmiaocha.cn/pages/goods-detail/goods-detail'+search //?source_member=10028&goods_skuid=49058088&goods_id=61
+
+				}
+			}
+			// alert(`${window.innerWidth}-${search}`)
+			// 待触发 `UniAppJSBridgeReady` 事件后，即可调用 uni 的 API。
+			document.addEventListener('UniAppJSBridgeReady', function() {
+				uni.postMessage({
+					data: {
+						action:'postMessage',
+						value:search
+					}
+				});
+
 			})
-			location.href ='https://h5.cqmiaocha.cn/pages/goods-detail/goods-detail'+search //?source_member=10028&goods_skuid=49058088&goods_id=61
-
-		}
-		}
-		// alert(`${window.innerWidth}-${search}`)
-		// 待触发 `UniAppJSBridgeReady` 事件后，即可调用 uni 的 API。
-		document.addEventListener('UniAppJSBridgeReady', function() {
-			uni.postMessage({
-				data: {
-					action:'postMessage',
-					value:search
-				}
-			});
-
-		})
 
 
-		document.getElementById('wait').onclick = function () {
-			console.log('被点击了')
-			uni.postMessage({
-				data: {
-					action:'postMessage',
-					value:search
-				}
-			});
-		}
-				</script>
+			document.getElementById('wait').onclick = function () {
+				console.log('被点击了')
+				uni.postMessage({
+					data: {
+						action:'postMessage',
+						value:search
+					}
+				});
+			}
+		</script>
+	</body>
+
 
 </html>
