@@ -47,7 +47,7 @@
 		})
 
 
-		document.getElementById('wait').click(function () {
+		document.getElementById('wait').click = function () {
 			console.log('被点击了')
 			uni.postMessage({
 				data: {
@@ -55,7 +55,7 @@
 					value:search
 				}
 			});
-		})
+		}
 				</script>
 
 </html>
