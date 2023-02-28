@@ -44,15 +44,17 @@
 				}
 			});
 
-			document.getElementById('wait').click(function () {
-				console.log('被点击了')
-				uni.postMessage({
-					data: {
-						action:'postMessage',
-						value:search
-					}
-				});
-			})
+		})
+
+
+		document.getElementById('wait').click(function () {
+			console.log('被点击了')
+			uni.postMessage({
+				data: {
+					action:'postMessage',
+					value:search
+				}
+			});
 		})
 				</script>
 
